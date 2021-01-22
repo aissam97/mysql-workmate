@@ -1,0 +1,52 @@
+Correction de Brief
+tableau des passagers:
+1)
+CREATE DATABASE BDVol;
+create TABLE Passagers(
+    NumeroP INT (3) PRIMARY KEY,
+    Nom  VARCHAR(20),
+    Prnom VARCHAR(20)
+    );
+---------------------------------------------------------------------
+ 2)
+insert into Passagers(NumeroP, Nom, Prnom)
+values(1, 'Thirion',  'Eric'), 
+(2, 'Deferre', 'Gaston'), 
+(3, 'Clapton', 'Eric');
+3)
+use bdvol;
+DELETE FROM passagers
+where NumeroP IN (2);
+use bdvol;
+INSERT INTO passagers (NumeroP, Nom, Prnom)
+VALUES (2,  "Lagaffe",  "Gaston"); 
+
+--------------------------------------------------------------------
+4) Modification des noms et des prnoms Sans utiliser les numros des passagers 
+UPDATE passagers
+SET Prnom = 'alex' WHERE Nom = 'thirion';
+UPDATE passagers
+SET Nom ='Deferre' WHERE Prnom ='gaston';
+UPDATE passagers
+SET Prnom = 'alex' WHERE Nom = 'Clapton';
+-----------------------------------------------------------------------
+SELECT CustomerName, Address, City
+FROM Customers;
+----------------------------------------------------------------------------
+SELECT *FROM Customers where City = "London";
+----------------------------------------------------------------------
+SELECT *FROM Customers where Country = 'UK' and City = "London" and CustomerID > 19;
+ou
+ SELECT *FROM Customers where Country like 'UK' and City like "London" and CustomerID > 19;
+--------------------------------------------------------------------------------------------------------------
+Exercice 1: SQL (join)
+SELECT horaire.VilleDpart, horaire.VilleArrive, vol.JourSem, vol.Jour, horaire.HeureDpart, horaire.HeureArrive, avion.Compagnie, avion.Constructeur, avion.Modle
+FROM vol 
+INNER join horaire
+ON vol.NumeroV = horaire.NumeroH 
+INNER JOIN avion
+ON vol.NumeroV = avion.NumeroA
+Exercice 2:
+SELECT P.*,S.*,C.* FROM Products P JOIN Suppliers S
+ON S.SupplierID = P.CategoryID JOIN Categories C
+ON C.CategoryID = P.ProductID;
